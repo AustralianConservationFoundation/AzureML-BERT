@@ -26,7 +26,8 @@ import pickle
 
 import sys
 sys.path.append("..")
-from pytorch_pretrained_bert.tokenization import BertTokenizer
+# from pytorch_pretrained_bert.tokenization import BertTokenizer
+from transformers import ElectraTokenizer
 from dataset import TokenInstance, PretrainingDataCreator, GenericPretrainingDataCreator
 
 
@@ -61,8 +62,10 @@ parser.add_argument("--processes", "-p", default=0, type=int,
                     help="This is to do parallel processing of the txt files. It should be >=0. Default: 0 represents that it will use all the available cores in the CPU.")
 
 args = parser.parse_args()
-tokenizer = BertTokenizer.from_pretrained(
-    args.token_file, do_lower_case=args.do_lower_case)
+# tokenizer = BertTokenizer.from_pretrained(
+#     args.token_file, do_lower_case=args.do_lower_case)
+
+tokenizer = ElectraTokenizer.from_pretrained('google/electra-small-discriminator', do_lower_case=args.do_lower_case)
 
 input_files = []
 output_files = []

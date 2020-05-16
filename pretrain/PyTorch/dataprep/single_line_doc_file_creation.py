@@ -2,10 +2,10 @@ import glob
 import os
 from tqdm import tqdm
 
-output_file = 'wikipedia.txt'
+output_file = '/mnt/d/bert-pretrain/wikiextract/test.txt'
 
 with open(output_file, "w") as ofile:
-  for dirname in glob.glob('out2/*/', recursive=False):
+  for dirname in glob.glob('/mnt/d/bert-pretrain/wikiextract/test/*/', recursive=False):
     for filename in glob.glob(dirname + 'wiki_*', recursive=True):
       print(filename)
       article_lines = []
